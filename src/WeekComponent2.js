@@ -2,7 +2,6 @@ import React from 'react';
 
 export default class WeekComponent extends React.Component {
 
-
 render() {
   return (
     <div>
@@ -10,25 +9,32 @@ render() {
         <ul>
         {this.props.thisIsProps.materials.map(function (element, i) {
           return (
-            <li key={i}>{element.title + ' - ' + element.link}</li>
+            <li key={i}>{element.title + ' - '} <a href={element.link} target="_blank">{element.link}</a></li>
           )
         })}
       </ul>
+      <input type="text"
+        placeholder="Bookmark Name"
+        value={this.props.valueName}
+        onChange={this.props.changePropsName} />
+      <input type="text"
+        placeholder="Bookmark Link"
+        value={this.props.valueLink}
+        onChange={this.props.changePropsLink} />
+
+
+      <button onClick={this.props.submitProps}>
+        Add Bookmark
+      </button>
+
           <br />
           <button
               key={this.props.thisIsProps.header+1}
               onClick={this.props.methodProps}
               style={{fontSize: 14, backgroundColor: 'gray'}}>
-              {"Add a Lesson to " + this.props.thisIsProps.header}
+              {"Change the program header " + this.props.thisIsProps.header}
           </button>
 
-          <input type="text"
-            placeholder="Hello!"
-            value={this.props.value}
-            onChange={this.props.changeProps} />
-          <button onClick={this.props.submitProps}>
-            Submit
-          </button>
     </div>
 
   );
